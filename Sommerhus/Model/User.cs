@@ -8,5 +8,6 @@ namespace Sommerhus.Model
 {
     public class User
     {
+
     }
 }
