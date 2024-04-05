@@ -12,33 +12,33 @@ namespace Sommerhus.Repository07
     {
 
 
-        public User Add(User member)
+        public User Add(User user)
         {
             SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string insertSql = "INSERT INTO Members (Name, Mobile, Team, Price) VALUES (@Name, @Mobile, @Team, @Price)";
+            string insertSql = "INSERT INTO User (Name, Mobile, Team, Price) VALUES (@Name, @Mobile, @Team, @Price)";
 
             SqlCommand cmd = new SqlCommand(insertSql, connection);
-            cmd.Parameters.AddWithValue("@Name", member.Name);
-            cmd.Parameters.AddWithValue("@Mobile", member.Mobile);
-            cmd.Parameters.AddWithValue("@Team", member.Team);
-            cmd.Parameters.AddWithValue("@Price", member.Price);
+            cmd.Parameters.AddWithValue("@Name", user.Name);
+            cmd.Parameters.AddWithValue("@Mobile", user.Mobile);
+            cmd.Parameters.AddWithValue("@Team", user.Team);
+            cmd.Parameters.AddWithValue("@Price", user.Price);
 
             int rowsAffected = cmd.ExecuteNonQuery();
             Console.WriteLine("Rows affected: " + rowsAffected);
 
             connection.Close();
-            return member;
+            return user;
         }
 
 
-        public Member Delete(int id)
+        public User Delete(int id)
         {
-            SqlConnection connection = new SqlConnection(Secrettt.GetConnectionString);
+            SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string deleteSql = "DELETE FROM Members WHERE Id = @Id";
+            string deleteSql = "DELETE FROM User WHERE Id = @Id";
 
             SqlCommand cmd = new SqlCommand(deleteSql, connection);
             cmd.Parameters.AddWithValue("@Id", id);
@@ -54,21 +54,21 @@ namespace Sommerhus.Repository07
 
 
 
-        public List<Member> GetAll()
+        public List<User> GetAll()
         {
-            List<Member> list = new List<Member>();
+            List<User> list = new List<User>();
 
-            SqlConnection connection = new SqlConnection(Secrettt.GetConnectionString);
+            SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string sql = "SELECT * FROM Members";
+            string sql = "SELECT * FROM User";
             SqlCommand cmd = new SqlCommand(sql, connection);
 
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Member member = ReadMember(reader);
-                list.Add(member);
+                User user = ReadUser(reader);
+                list.Add(user);
             }
 
 
@@ -78,39 +78,39 @@ namespace Sommerhus.Repository07
 
         }
 
-        private Member ReadMember(SqlDataReader reader)
+        private User ReadUser(SqlDataReader reader)
         {
-            Member member = new Member();
+            User user = new User();
 
-            member.Id = reader.GetInt32(0);
-            member.Name = reader.GetString(1);
-            member.Mobile = reader.GetString(2);
-            member.Team = reader.GetString(3);
+            user.Id = reader.GetInt32(0);
+            user.Name = reader.GetString(1);
+            user.Mobile = reader.GetString(2);
+            user.Team = reader.GetString(3);
 
-            member.Price = Convert.ToDouble(reader.GetDecimal(4));
+            user.Price = reader.GetDecimal(4);
 
-            return member;
+            return user;
         }
 
 
 
-        public Member GetById(int id)
+        public User GetById(int id)
         {
-            SqlConnection connection = new SqlConnection(Secrettt.GetConnectionString);
+            SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string selectSql = "SELECT * FROM Members WHERE Id = @Id";
+            string selectSql = "SELECT * FROM User WHERE Id = @Id";
 
             SqlCommand cmd = new SqlCommand(selectSql, connection);
             cmd.Parameters.AddWithValue("@Id", id);
 
             SqlDataReader reader = cmd.ExecuteReader();
 
-            Member member = null;
+            User user = null;
 
             if (reader.Read())
             {
-                member = new Member
+                user = new User
                 {
                     Id = Convert.ToInt32(reader["Id"]),
                     Name = reader["Name"].ToString(),
@@ -123,22 +123,30 @@ namespace Sommerhus.Repository07
             reader.Close();
             connection.Close();
 
-            return member;
+            return user;
         }
 
 
-        public Member Update(int id, Member member)
+        public User Update(int id, User user)
         {
-            SqlConnection connection = new SqlConnection(Secrettt.GetConnectionString);
+            SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string updateSql = "UPDATE Members SET Name = @Name, Mobile = @Mobile, Team = @Team, Price = @Price WHERE Id = @Id";
+            string updateSql = "UPDATE User SET Name = @Name, Mobile = @Mobile, Team = @Team, Price = @Price WHERE Id = @Id";
 
             SqlCommand cmd = new SqlCommand(updateSql, connection);
-            cmd.Parameters.AddWithValue("@Name", member.Name);
-            cmd.Parameters.AddWithValue("@Mobile", member.Mobile);
-            cmd.Parameters.AddWithValue("@Team", member.Team);
-            cmd.Parameters.AddWithValue("@Price", member.Price);
+            cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+            cmd.Parameters.AddWithValue("@LastName", user.LastName);
+            cmd.Parameters.AddWithValue("@Phone", user.Phone);
+            cmd.Parameters.AddWithValue("@Email", user.Email);
+            cmd.Parameters.AddWithValue("@Password", user.Password);
+            cmd.Parameters.AddWithValue("@StreetName", user.StreetName);
+            cmd.Parameters.AddWithValue("@HouseNumber", user.HouseNumber);
+            cmd.Parameters.AddWithValue("@Floor", user.Floor);
+            cmd.Parameters.AddWithValue("@City", user.City);
+            cmd.Parameters.AddWithValue("@Postalcode", user.PostalCode);
+            cmd.Parameters.AddWithValue("@Floor", user.Floor);
+            cmd.Parameters.AddWithValue("@IsLandlord", user.IsLandlord);
             cmd.Parameters.AddWithValue("@Id", id);
 
             int rowsAffected = cmd.ExecuteNonQuery();
