@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34601.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sommerhus", "Sommerhus\Sommerhus.csproj", "{8B0EF1E3-4D2F-4E30-B8C5-8211F613EE05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SommerhusHjemmeside", "SommerhusHjemmeside\SommerhusHjemmeside.csproj", "{489157CD-4CB5-4240-A614-E9C919BA7028}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B0EF1E3-4D2F-4E30-B8C5-8211F613EE05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0EF1E3-4D2F-4E30-B8C5-8211F613EE05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0EF1E3-4D2F-4E30-B8C5-8211F613EE05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0EF1E3-4D2F-4E30-B8C5-8211F613EE05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{489157CD-4CB5-4240-A614-E9C919BA7028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{489157CD-4CB5-4240-A614-E9C919BA7028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{489157CD-4CB5-4240-A614-E9C919BA7028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{489157CD-4CB5-4240-A614-E9C919BA7028}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {50811783-C8ED-4006-8127-B718E1ACB8A3}
+	EndGlobalSection
+EndGlobal
