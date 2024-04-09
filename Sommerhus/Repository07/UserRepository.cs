@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sommerhus.Repository07
 {
-    public class UserRepository
+    public class UserRepository : IUserRepostiroy
     {
 
 
@@ -17,7 +17,7 @@ namespace Sommerhus.Repository07
             SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string insertSql = "INSERT INTO User (FirstName, LastName, Phone, Email, Password, StreetName, HouseNumber, Floor, City, PostalCode, IsAdmin, IsLandlord) VALUES (@FirstName, @LastName, @Phone, @Email, @Password, @StreetName, @HouseNumber, @Floor, @City, @IsAdmin, @IsLandlord)";
+            string insertSql = "INSERT INTO SommerUser (FirstName, LastName, Phone, Email, Password, StreetName, HouseNumber, Floor, City, PostalCode, IsAdmin, IsLandlord) VALUES (@FirstName, @LastName, @Phone, @Email, @Password, @StreetName, @HouseNumber, @Floor, @City, @IsAdmin, @IsLandlord)";
 
             SqlCommand cmd = new SqlCommand(insertSql, connection);
             cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
@@ -46,7 +46,7 @@ namespace Sommerhus.Repository07
             SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string deleteSql = "DELETE FROM User WHERE Id = @Id";
+            string deleteSql = "DELETE FROM SommerUser WHERE Id = @Id";
 
             SqlCommand cmd = new SqlCommand(deleteSql, connection);
             cmd.Parameters.AddWithValue("@Id", id);
@@ -69,7 +69,7 @@ namespace Sommerhus.Repository07
             SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string sql = "SELECT * FROM User";
+            string sql = "SELECT * FROM SommerUser";
             SqlCommand cmd = new SqlCommand(sql, connection);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -94,15 +94,15 @@ namespace Sommerhus.Repository07
             user.FirstName = reader.GetString(1);
             user.LastName = reader.GetString(2);
             user.Phone = reader.GetString(3);
-            user.Email = reader.GetString(3);
-            user.Password = reader.GetString(3);
-            user.StreetName = reader.GetString(3);
-            user.HouseNumber = reader.GetString(3);
-            user.Floor = reader.GetString(3);
-            user.City = reader.GetString(3);
-            user.PostalCode = Convert.ToInt32(reader["PostalCode"]);
-            user.IsAdmin = reader["IsAdmin"].ToString() == "false";
-            user.IsLandlord = reader["IsLandlord"].ToString() == "false";
+            user.Email = reader.GetString(4);
+            user.Password = reader.GetString(5);
+            user.StreetName = reader.GetString(6);
+            user.HouseNumber = reader.GetString(7);
+            user.Floor = reader.GetString(8);
+            user.City = reader.GetString(9);
+            user.PostalCode = reader.GetInt32(10);
+            user.IsAdmin = reader.GetBoolean(11);
+            user.IsLandlord = reader.GetBoolean(12);
 
 
 
@@ -116,7 +116,7 @@ namespace Sommerhus.Repository07
             SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string selectSql = "SELECT * FROM User WHERE Id = @Id";
+            string selectSql = "SELECT * FROM SommerUser WHERE Id = @Id";
 
             SqlCommand cmd = new SqlCommand(selectSql, connection);
             cmd.Parameters.AddWithValue("@Id", id);
@@ -157,7 +157,7 @@ namespace Sommerhus.Repository07
             SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string updateSql = "UPDATE User SET FirstName = @FirstName, LastName = @LastName, Phone = @Phone, Email = @Email, Password = @Password, StreetName = @StreetName, HouseNumber = @HouseNumber, Floor = @Floor, City = @City, Postalcode = @Postalcode, IsLandlord = @IsLandlord  WHERE Id = @Id";
+            string updateSql = "UPDATE SommerUser SET FirstName = @FirstName, LastName = @LastName, Phone = @Phone, Email = @Email, Password = @Password, StreetName = @StreetName, HouseNumber = @HouseNumber, Floor = @Floor, City = @City, Postalcode = @Postalcode, IsLandlord = @IsLandlord  WHERE Id = @Id";
 
             SqlCommand cmd = new SqlCommand(updateSql, connection);
             cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
@@ -184,6 +184,11 @@ namespace Sommerhus.Repository07
                 return GetById(id);
             }
             return null;
+        }
+
+        public List<User> Search(int? id, string? name, string? team)
+        {
+            throw new NotImplementedException();
         }
     }
 }

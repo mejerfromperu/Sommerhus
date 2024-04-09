@@ -264,6 +264,36 @@ namespace Sommerhus.Model
             IsAdmin = isAdmin;
         }
 
+
+        public User(string firstName, string lastName, string email, string password, string phone, string streetName, string houseNumber, string floor, string city, int postalCode, bool isLandlord, bool isAdmin)
+
+        {
+
+            FirstName = firstName;
+
+            LastName = lastName;
+
+            Email = email;
+
+            Password = password;
+
+            Phone = phone;
+
+            StreetName = streetName;
+
+            HouseNumber = houseNumber;
+
+            Floor = floor;
+
+            City = city;
+
+            PostalCode = postalCode;
+
+            IsLandlord = isLandlord;
+
+            IsAdmin = isAdmin;
+        }
+
     }
 
 }
