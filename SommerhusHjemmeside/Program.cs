@@ -1,9 +1,16 @@
+using Microsoft.Extensions.DependencyInjection;
+using Sommerhus.Repository07;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddSingleton<IUserRepostiroy>(new UserRepository());
+
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
