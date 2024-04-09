@@ -1,0 +1,66 @@
+﻿@page
+@model SommerhusHjemmeside.Pages.UserSite.CreateModel
+@{
+}
+
+
+<form method="post">
+    <div class="form-group>">
+        <div class="row">
+            <div class="col-6">
+                <label>Navn</label><br />
+                <input class="form-control" /><br />
+            </div>
+            <div class="col-6">
+                <label>Efter Navn</label><br />
+                <input class="form-control"/><br />
+            </div>
+        </div>
+
+        <label>Email</label><br/>
+        <input class="form-control"/><br />
+        <label>Bekræft Email</label><br />
+        <input class="form-control" /><br />
+        <label>Password</label><br />
+        <input class="form-control" /><br />
+        <div class="row">
+            <div class="col-7">
+                <label>Kommune</label><br />
+                <input class="form-control" /><br />
+            </div>
+            <div class="col-5">
+                <label>Post Nummer</label><br />
+                <input class="form-control" /><br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>Vej Navn</label><br />
+                <input class="form-control" /><br />
+            </div>
+            <div class="col-3">
+                <label>Vej Nr.</label><br />
+                <input class="form-control" /><br />
+            </div>
+            <div class="col-3">
+                <label>Etage</label><br />
+                <input class="form-control" /><br />
+            </div>
+        </div>
+        <label>Telefon Nummer</label><br />
+        <input class="form-control" /><br />
+
+        <div class="row">
+            <div class="col-6">
+                <input type="submit" value="Opret Bruger" class="btn btn-primary" />
+            </div>
+            <div class="col-2">
+                <input type="submit" value="Fortryd" class="btn btn-outline-danger" />
+            </div>
+            <div class="col-4 form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="mySwitch" name="Udlejer" value="yes" unchecked>
+                    <label class="form-check-label" for="mySwitch">Udlejer</label>
+            </div>
+    </div>
+    </div>
+</form>

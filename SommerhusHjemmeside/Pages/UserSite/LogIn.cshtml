@@ -1,0 +1,43 @@
+﻿@page
+@model SommerhusHjemmeside.Pages.UserSite.LogInModel
+@{
+}
+
+
+<body class="body">
+    <div class="wrapper">
+        <div class="loginbox">
+            <div class="login-header">
+                <span class="gradient-text">
+                    Login
+                </span>
+            </div>
+
+            <div class="input_box">
+                <label for="username" class="label">Username</label>
+                <input type="text" id="username" class="input-field" placeholder="Username" required />
+                <i class="bx bx-lock-alt icon"></i>
+            </div>
+
+            <div class="input_box">
+                <label for="password" class="label">Password</label>
+                <input type="password" id="password" class="input-field" placeholder="Password" required />
+                <i class="bx bx-lock-alt icon"></i>
+            </div>
+
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" />
+                    <label for="remember">Remember Me</label>
+                </div>
+                <div class="forgot">
+                    <a href="#">Forgot Password</a>
+                </div>
+            </div>
+
+            <div class="input_box">
+                <input type="submit" class="input-submit" value="Login" />
+            </div>
+        </div>
+    </div>
+</body>

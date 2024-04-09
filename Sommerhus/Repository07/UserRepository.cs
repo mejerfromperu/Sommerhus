@@ -1,0 +1,189 @@
+﻿using Sommerhus.Model;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sommerhus.Repository07
+{
+    public class UserRepository
+    {
+
+
+        public User Add(User user)
+        {
+            SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
+            connection.Open();
+
+            string insertSql = "INSERT INTO User (FirstName, LastName, Phone, Email, Password, StreetName, HouseNumber, Floor, City, PostalCode, IsAdmin, IsLandlord) VALUES (@FirstName, @LastName, @Phone, @Email, @Password, @StreetName, @HouseNumber, @Floor, @City, @IsAdmin, @IsLandlord)";
+
+            SqlCommand cmd = new SqlCommand(insertSql, connection);
+            cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+            cmd.Parameters.AddWithValue("@LastName", user.LastName);
+            cmd.Parameters.AddWithValue("@Phone", user.Phone);
+            cmd.Parameters.AddWithValue("@Email", user.Email);
+            cmd.Parameters.AddWithValue("@Password", user.Password);
+            cmd.Parameters.AddWithValue("@StreetName", user.StreetName);
+            cmd.Parameters.AddWithValue("@HouseNumber", user.HouseNumber);
+            cmd.Parameters.AddWithValue("@Floor", user.Floor);
+            cmd.Parameters.AddWithValue("@City", user.City);
+            cmd.Parameters.AddWithValue("@PostalCode", user.PostalCode);
+            cmd.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
+            cmd.Parameters.AddWithValue("@IsLandlord", user.IsLandlord);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+            Console.WriteLine("Rows affected: " + rowsAffected);
+
+            connection.Close();
+            return user;
+        }
+
+
+        public User Delete(int id)
+        {
+            SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
+            connection.Open();
+
+            string deleteSql = "DELETE FROM User WHERE Id = @Id";
+
+            SqlCommand cmd = new SqlCommand(deleteSql, connection);
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+            Console.WriteLine("Rows affected: " + rowsAffected);
+
+            connection.Close();
+
+
+            return null;
+        }
+
+
+
+        public List<User> GetAll()
+        {
+            List<User> list = new List<User>();
+
+            SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
+            connection.Open();
+
+            string sql = "SELECT * FROM User";
+            SqlCommand cmd = new SqlCommand(sql, connection);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                User user = ReadUser(reader);
+                list.Add(user);
+            }
+
+
+            connection.Close();
+            return list;
+
+
+        }
+
+        private User ReadUser(SqlDataReader reader)
+        {
+            User user = new User();
+
+            user.Id = reader.GetInt32(0);
+            user.FirstName = reader.GetString(1);
+            user.LastName = reader.GetString(2);
+            user.Phone = reader.GetString(3);
+            user.Email = reader.GetString(3);
+            user.Password = reader.GetString(3);
+            user.StreetName = reader.GetString(3);
+            user.HouseNumber = reader.GetString(3);
+            user.Floor = reader.GetString(3);
+            user.City = reader.GetString(3);
+            user.PostalCode = Convert.ToInt32(reader["PostalCode"]);
+            user.IsAdmin = reader["IsAdmin"].ToString() == "false";
+            user.IsLandlord = reader["IsLandlord"].ToString() == "false";
+
+
+
+            return user;
+        }
+
+
+
+        public User GetById(int id)
+        {
+            SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
+            connection.Open();
+
+            string selectSql = "SELECT * FROM User WHERE Id = @Id";
+
+            SqlCommand cmd = new SqlCommand(selectSql, connection);
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            User user = null;
+
+            if (reader.Read())
+            {
+                user = new User
+                {
+                    Id = Convert.ToInt32(reader["Id"]),
+                    FirstName = reader["FirstName"].ToString(),
+                    LastName = reader["LastName"].ToString(),
+                    Phone = reader["Phone"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    Password = reader["Password"].ToString(),
+                    StreetName = reader["StreetName"].ToString(),
+                    HouseNumber = reader["HouseNumber"].ToString(),
+                    Floor = reader["Floor"].ToString(),
+                    City = reader["City"].ToString(),
+                    PostalCode = Convert.ToInt32(reader["PostalCode"]),
+                    IsAdmin = reader["IsAdmin"].ToString() == "false",
+                    IsLandlord = reader["IsLandlord"].ToString() == "false"
+                };
+            }
+
+            reader.Close();
+            connection.Close();
+
+            return user;
+        }
+
+
+        public User Update(int id, User user)
+        {
+            SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
+            connection.Open();
+
+            string updateSql = "UPDATE User SET FirstName = @FirstName, LastName = @LastName, Phone = @Phone, Email = @Email, Password = @Password, StreetName = @StreetName, HouseNumber = @HouseNumber, Floor = @Floor, City = @City, Postalcode = @Postalcode, IsLandlord = @IsLandlord  WHERE Id = @Id";
+
+            SqlCommand cmd = new SqlCommand(updateSql, connection);
+            cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+            cmd.Parameters.AddWithValue("@LastName", user.LastName);
+            cmd.Parameters.AddWithValue("@Phone", user.Phone);
+            cmd.Parameters.AddWithValue("@Email", user.Email);
+            cmd.Parameters.AddWithValue("@Password", user.Password);
+            cmd.Parameters.AddWithValue("@StreetName", user.StreetName);
+            cmd.Parameters.AddWithValue("@HouseNumber", user.HouseNumber);
+            cmd.Parameters.AddWithValue("@Floor", user.Floor);
+            cmd.Parameters.AddWithValue("@City", user.City);
+            cmd.Parameters.AddWithValue("@PostalCode", user.PostalCode);
+            cmd.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
+            cmd.Parameters.AddWithValue("@IsLandlord", user.IsLandlord);
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+            Console.WriteLine("Rows affected: " + rowsAffected);
+
+            connection.Close();
+
+            if (rowsAffected > 0)
+            {
+                return GetById(id);
+            }
+            return null;
+        }
+    }
+}

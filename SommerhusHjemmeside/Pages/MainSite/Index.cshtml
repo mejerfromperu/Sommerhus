@@ -1,0 +1,106 @@
+﻿@page
+@model SommerhusHjemmeside.Pages.MainSite.IndexModel
+@{
+}
+
+<div class="text-white p-5 my-7 gap-5" >
+    <div class="bg-dark rounded-2">
+    <form method="post" class="border border-success rounded p-1">
+        <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-outline-success" />
+            <div class="row-cols-1 form-outline mb-4">
+                <label class="form-label">Navn </label>
+                <input type="text"/>
+                <label class="form-label">Brand </label>
+                <input type="text"/>
+            </div>
+        <input type="range" id="priceRange" class="form-range" name="priceRange" min="0" max="20000" step="500" value="" />
+    <div class="container">
+        <ul class="list-unstyled d-flex justify-content-between">
+            <li>Min  : 0 kr.</li>
+            <li><input hidden/><output form="get" id="priceOutput"></output></li>
+            <li>Maks : 20.000 kr.</li>
+        </ul>
+    </div>
+
+        <select class="form-select">
+            <option value="" > Bil Typer</option>
+            <option value="" > Alle Bil Typer</option>
+            <option value="SUV" > SUV</option>
+            <option value="Hatchback"> Hatchback</option>
+            <option value="Staioncar"> Staioncar</option>
+            <option value="MPV" > MPV</option>
+            <option value="Cabriolet" > Cabriolet</option>
+        </select>
+
+        <select class="form-select">
+            <option value="" > Gear kasse Typer</option>
+            <option value="" > Alle Gear kasser</option>
+            <option value="Automat"> Automat Gear</option>
+            <option value="Manuel"> Manuelle Gear</option>
+        </select>
+
+        <select class="form-select">
+            <option value=""> Motor Typer</option>
+            <option value=""> Alle Motorer</option>
+            <option value="Benzin" > Benzin</option>
+            <option value="Diesel" > Diesel</option>
+            <option value="Hybrid" > Hybrid</option>
+            <option value="Elektrisk" > Elektrisk</option>
+        </select>
+
+        <select class="form-select">
+            <option value="" > Lokationer</option>
+            <option value="" > Alle Lokationer</option>
+            <option value="Aarhus" > Aarhus</option>
+            <option value="Aalborg"> Aalborg</option>
+            <option value="Fredericia"> Fredericia</option>
+            <option value="Søborg"> Søborg</option>
+        </select>
+    </form>
+    </div>
+</div>
+
+ <div class="row justify-content-evenly gap-5">
+  
+            <div class="card bg-dark" style="width: 20em">
+                <div>
+                    <div class="container p-5 my-5">
+                        <div class="card-subtitle ">
+                            <h2 class="gradient-text"></h2>
+                            <h3 class="gradient-text"></h3>
+                        </div>
+                        <div class="card-body text-white">
+                            <ul>
+                                <li><p>Pris:</p></li>
+                                <li><p>Lokation:</p></li>
+                                <li><p>Beskrivelse:</p></li>
+                            </ul>
+                            <div class="d-grid">
+                                <a class="btn btn-block bestil" asp-page="Bestilling" asp-route-licensplate="">BESTIL</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
+@section Scripts {
+    <script>
+        const priceRange = document.getElementById('priceRange');
+        const priceOutput = document.getElementById('priceOutput');
+
+        function updatePrice() {
+            const selectedPrice = parseFloat(priceRange.value);
+            priceOutput.textContent = "Maks Pris: " + selectedPrice.toLocaleString() + " Kr.";
+            localStorage.setItem('selectedPrice', selectedPrice);
+        }
+
+        priceRange.addEventListener('input', updatePrice);
+
+        const savedPrice = localStorage.getItem('selectedPrice');
+        if (savedPrice !== null) {
+            priceRange.value = savedPrice;
+            updatePrice();
+        }
+    </script>
+}
