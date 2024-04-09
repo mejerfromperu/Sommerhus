@@ -94,15 +94,15 @@ namespace Sommerhus.Repository07
             user.FirstName = reader.GetString(1);
             user.LastName = reader.GetString(2);
             user.Phone = reader.GetString(3);
-            user.Email = reader.GetString(3);
-            user.Password = reader.GetString(3);
-            user.StreetName = reader.GetString(3);
-            user.HouseNumber = reader.GetString(3);
-            user.Floor = reader.GetString(3);
-            user.City = reader.GetString(3);
-            user.PostalCode = Convert.ToInt32(reader["PostalCode"]);
-            user.IsAdmin = reader["IsAdmin"].ToString() == "false";
-            user.IsLandlord = reader["IsLandlord"].ToString() == "false";
+            user.Email = reader.GetString(4);
+            user.Password = reader.GetString(5);
+            user.StreetName = reader.GetString(6);
+            user.HouseNumber = reader.GetString(7);
+            user.Floor = reader.GetString(8);
+            user.City = reader.GetString(9);
+            user.PostalCode = reader.GetInt32(10);
+            user.IsAdmin = reader.GetBoolean(11);
+            user.IsLandlord = reader.GetBoolean(12);
 
 
 
