@@ -38,6 +38,8 @@ namespace Sommerhus.Model
 
         private bool _isLandlord;
 
+        private bool _isAdmin;
+
 
 
         // Properties 
@@ -184,6 +186,15 @@ namespace Sommerhus.Model
 
         }
 
+        public bool IsAdmin
+
+        {
+
+            get { return _isAdmin; }
+
+            set { _isAdmin = value; }
+
+        }
 
 
         // Constructor 
@@ -216,11 +227,13 @@ namespace Sommerhus.Model
 
             IsLandlord = false;
 
+            IsAdmin = false;
+
         }
 
 
 
-        public User(int id, string firstName, string lastName, string email, string password, string phone, string streetName, string houseNumber, string floor, string city, int postalCode, bool isLandlord)
+        public User(int id, string firstName, string lastName, string email, string password, string phone, string streetName, string houseNumber, string floor, string city, int postalCode, bool isLandlord, bool isAdmin)
 
         {
 
@@ -248,6 +261,7 @@ namespace Sommerhus.Model
 
             IsLandlord = isLandlord;
 
+            IsAdmin = isAdmin;
         }
 
     }
