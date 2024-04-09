@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SommerhusHjemmeside.Pages.UserSite
 {
-    public class GreateModel : PageModel
+    public class CreateModel : PageModel
     {
         public void OnGet()
         {
