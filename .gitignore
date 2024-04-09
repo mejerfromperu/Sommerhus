@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Sommerhus/Model/Secret.cs
+/Sommerhus/Model/Secret.cs
