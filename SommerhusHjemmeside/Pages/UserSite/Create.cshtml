@@ -9,53 +9,50 @@
         <div class="row">
             <div class="col-6">
                 <label>Navn</label><br />
-                <input class="form-control" /><br />
+                <input class="form-control" asp-for="@Model.NewUserFirstName" /><br />
             </div>
             <div class="col-6">
                 <label>Efter Navn</label><br />
-                <input class="form-control"/><br />
+                <input class="form-control" asp-for="@Model.NewUserLastName" /><br />
             </div>
         </div>
-
-        <label>Email</label><br/>
-        <input class="form-control"/><br />
-        <label>Bekræft Email</label><br />
-        <input class="form-control" /><br />
+        <label>Email</label><br />
+        <input class="form-control" asp-for="@Model.NewUserEmail" /><br />
         <label>Password</label><br />
-        <input class="form-control" /><br />
+        <input class="form-control" asp-for="@Model.NewUserPassword" /><br />
         <div class="row">
             <div class="col-7">
-                <label>Kommune</label><br />
-                <input class="form-control" /><br />
+                <label>By</label><br />
+                <input class="form-control" asp-for="@Model.NewUserCity" /><br />
             </div>
             <div class="col-5">
                 <label>Post Nummer</label><br />
-                <input class="form-control" /><br />
+                <input class="form-control" asp-for="@Model.NewUserPostalCode" /><br />
             </div>
         </div>
         <div class="row">
             <div class="col-6">
                 <label>Vej Navn</label><br />
-                <input class="form-control" /><br />
+                <input class="form-control" asp-for="@Model.NewUserStreetName" /><br />
             </div>
             <div class="col-3">
                 <label>Vej Nr.</label><br />
-                <input class="form-control" /><br />
+                <input class="form-control" asp-for="@Model.NewUserHouseNumber" /><br />
             </div>
             <div class="col-3">
                 <label>Etage</label><br />
-                <input class="form-control" /><br />
+                <input class="form-control" asp-for="@Model.NewUserFloor" /><br />
             </div>
         </div>
         <label>Telefon Nummer</label><br />
-        <input class="form-control" /><br />
+        <input class="form-control" asp-for="@Model.NewUserPhone" /><br />
 
         <div class="row">
             <div class="col-6">
-                <input type="submit" value="Opret Bruger" class="btn btn-primary" />
+                <input type="submit" value="Opret User" class="btn btn-primary" />
             </div>
             <div class="col-2">
-                <input type="submit" value="Fortryd" class="btn btn-outline-danger" />
+                <input type="submit" value="Fortryd" class="btn btn-outline-danger" asp-page-handler="Cancel"/>
             </div>
             <div class="col-4 form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="mySwitch" name="Udlejer" value="yes" unchecked>

@@ -20,15 +20,12 @@ html {
 body {
   margin-bottom: 60px;
 }
-
-.gradient-text {
-    background: linear-gradient(180deg, white, #59ffa0);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.BG-Special {
+    background: #2082B0;
+    color: black;
 }
-
-.gradient-text2 {
-    background: #59ffa0;
+.gradient-text {
+    background: linear-gradient(180deg, black, darkblue);
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -44,9 +41,9 @@ body {
 /*all CSS to The login box*/
 .loginbox {
     position: relative;
-    background-color: rgba(0, 11, 11, 11);
+    background-color: whitesmoke;
     backdrop-filter: blur(50%);
-    border: solid 4px black;
+    border: solid 4px #2082B0;
     align-content: center;
     border-radius: 20px 20px 20px 20px;
     width: 350px;
@@ -62,7 +59,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: black;
+    background: #2082B0;
     width: 140px;
     height: 46px;
     border-radius: 0 0 20px 20px;
@@ -87,15 +84,15 @@ body {
     font-size: 16px;
     background: transparent;
     padding-inline: 20px 10px;
-    border: 2px solid #59ffa0;
+    border: 2px solid #2082B0;
     border-radius: 0 20px 20px 20px;
     outline: none;
-    color: white;
+    color: black;
     margin-bottom: 25px;
 }
 
     .input-field::placeholder {
-        color: white;
+        color: dimgrey;
     }
 
     .input-field ::after {
@@ -105,14 +102,14 @@ body {
 
 .label {
     margin-left: 5px;
-    color: #59ffa0;
+    color: black;
     font-size: 16px;
     font-weight: 500;
     border-radius: 10px 10px 0 0;
 }
 
 .remember-forgot {
-    color: #59ffa0;
+    color: black;
     display: flex;
     justify-content: space-between;
     margin-bottom: 60px;
@@ -124,6 +121,6 @@ body {
     font-size: 24px;
     font-weight: 600;
     border-radius: 15px;
-    background-color: #59ffa0;
+    border: 2px solid dimgrey;
+    background-color: #DEE50F;
 }
-
