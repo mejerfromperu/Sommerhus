@@ -13,7 +13,7 @@ namespace Sommerhus.Model
 
         {
 
-            get { return "Data Source=mssql16.unoeuro.com;User ID=isakgm_dk;Password=f2t9wHmFRDenbEA53ghp;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"; }
+            get { return "Data Source=mssql16.unoeuro.com;User ID=isakgm_dk;Password=f2t9wHmFRDenbEA53ghp;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"; }
 
         }
     }
