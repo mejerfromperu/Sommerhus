@@ -75,7 +75,7 @@ namespace SommerhusHjemmeside.Pages.UserSite
             {
                 return Page();
             }
-            User newuser = new User(NewUserFirstName, NewUserLastName, NewUserPhone, NewUserEmail, NewUserPassword, NewUserStreetName, NewUserHouseNumber, NewUserFloor, NewUserCity, NewUserPostalCode, NewUserIsLandLord, NewUserIsAdmin);
+            User newuser = new User(NewUserFirstName, NewUserLastName, NewUserPhone, NewUserEmail, NewUserPassword, NewUserStreetName, NewUserHouseNumber, NewUserFloor, NewUserPostalCode, NewUserIsLandLord, NewUserIsAdmin);
 
             try
             {

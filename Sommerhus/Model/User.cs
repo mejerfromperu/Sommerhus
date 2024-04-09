@@ -233,7 +233,7 @@ namespace Sommerhus.Model
 
 
 
-        public User(int id, string firstName, string lastName, string email, string password, string phone, string streetName, string houseNumber, string floor, string city, int postalCode, bool isLandlord, bool isAdmin)
+        public User(int id, string firstName, string lastName, string email, string password, string phone, string streetName, string houseNumber, string floor, int postalCode, bool isLandlord, bool isAdmin)
 
         {
 
@@ -255,8 +255,6 @@ namespace Sommerhus.Model
 
             Floor = floor;
 
-            City = city;
-
             PostalCode = postalCode;
 
             IsLandlord = isLandlord;
@@ -265,7 +263,7 @@ namespace Sommerhus.Model
         }
 
 
-        public User(string firstName, string lastName, string email, string password, string phone, string streetName, string houseNumber, string floor, string city, int postalCode, bool isLandlord, bool isAdmin)
+        public User(string firstName, string lastName, string email, string password, string phone, string streetName, string houseNumber, string floor, int postalCode, bool isLandlord, bool isAdmin)
 
         {
 
@@ -284,8 +282,6 @@ namespace Sommerhus.Model
             HouseNumber = houseNumber;
 
             Floor = floor;
-
-            City = city;
 
             PostalCode = postalCode;
 
