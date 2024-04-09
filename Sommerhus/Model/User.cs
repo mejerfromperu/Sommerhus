@@ -290,6 +290,30 @@ namespace Sommerhus.Model
             IsAdmin = isAdmin;
         }
 
+
+        public User(string firstName, string lastName, string email, string password, string phone, string streetName, string houseNumber, string floor, int postalCode)
+
+        {
+
+            FirstName = firstName;
+
+            LastName = lastName;
+
+            Email = email;
+
+            Password = password;
+
+            Phone = phone;
+
+            StreetName = streetName;
+
+            HouseNumber = houseNumber;
+
+            Floor = floor;
+
+            PostalCode = postalCode;
+        }
+
     }
 
 }
