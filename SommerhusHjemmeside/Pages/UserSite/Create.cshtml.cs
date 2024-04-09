@@ -57,6 +57,8 @@ namespace SommerhusHjemmeside.Pages.UserSite
         public int NewUserPostalCode { get; set; }
 
         [BindProperty]
+        public bool NewUserIsAdmin { get; set; }
+        [BindProperty]
         public bool NewUserIsLandLord { get; set; }
 
         public string ErrorMessage { get; private set; }
@@ -73,7 +75,7 @@ namespace SommerhusHjemmeside.Pages.UserSite
             {
                 return Page();
             }
-            User newuser = new User(NewUserFirstName, NewUserLastName, NewUserPhone, NewUserEmail, NewUserPassword, NewUserStreetName, NewUserHouseNumber, NewUserFloor, NewUserCity, NewUserPostalCode, NewUserIsLandLord, false);
+            User newuser = new User(NewUserFirstName, NewUserLastName, NewUserPhone, NewUserEmail, NewUserPassword, NewUserStreetName, NewUserHouseNumber, NewUserFloor, NewUserCity, NewUserPostalCode, NewUserIsLandLord, NewUserIsAdmin);
 
             try
             {
