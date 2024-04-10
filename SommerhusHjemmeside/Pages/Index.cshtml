@@ -1,10 +1,29 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="row justify-content-evenly gap-5">
+
+            <div class="card my-2 p-2 " style="width: 20em; background: whitesmoke;">
+            <div>
+                <img class="card-img-top rounded-2" src="~/css/image/sommer&solimg.jpg" alt="Card Image"/>
+                    <div class="card-subtitle my-2">
+                            <h2>#lokation</h2>
+                            <h3>#Pris</h3>
+                    </div>
+                    <div class="card-body text-black">
+                            <ul>
+                                <li>Beskrivelse:</li>
+                                <p>#beskrivelse</p>
+                            </ul>
+                            <div class="d-flex justify-content-around text-white">
+                            <a class="btn btn-outline-dark" style="background: #DEE50F; border: 2px dimgrey; width: 50%;">BESTIL</a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
 </div>
