@@ -28,7 +28,7 @@ namespace Sommerhus.Repository07
             cmd.Parameters.AddWithValue("@StreetName", user.StreetName);
             cmd.Parameters.AddWithValue("@HouseNumber", user.HouseNumber);
             cmd.Parameters.AddWithValue("@Floor", user.Floor);
-            cmd.Parameters.AddWithValue("@PostalCode", user.PostalCode);
+            cmd.Parameters.AddWithValue("@PostalCode",   user.PostalCode);
             cmd.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
             cmd.Parameters.AddWithValue("@IsLandlord", user.IsLandlord);
 
