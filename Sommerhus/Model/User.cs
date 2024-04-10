@@ -312,6 +312,10 @@ namespace Sommerhus.Model
             PostalCode = postalCode;
         }
 
+        public override string ToString()
+        {
+            return $"{{{nameof(Id)}={Id.ToString()}, {nameof(FirstName)}={FirstName}, {nameof(LastName)}={LastName}, {nameof(Email)}={Email}, {nameof(Password)}={Password}, {nameof(Phone)}={Phone}, {nameof(StreetName)}={StreetName}, {nameof(HouseNumber)}={HouseNumber}, {nameof(Floor)}={Floor}, {nameof(City)}={City}, {nameof(PostalCode)}={PostalCode.ToString()}, {nameof(IsLandlord)}={IsLandlord.ToString()}, {nameof(IsAdmin)}={IsAdmin.ToString()}}}";
+        }
     }
 
 }
