@@ -221,8 +221,6 @@ namespace Sommerhus.Model
 
             Floor = string.Empty;
 
-            City = string.Empty;
-
             PostalCode = 0;
 
             IsLandlord = false;
