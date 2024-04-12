@@ -1,30 +1,26 @@
 ﻿@page
 @model SommerhusHjemmeside.Pages.SommerHouse.GreateSommerHouseModel
 @{
-    ViewData["Title"] = "Greate Renting House";
+    ViewData["Title"] = "Greate New Rental";
 }
 
-<div class="row rounded-4 container my-2 p-2" style="width: 100%; background: whitesmoke;">
-    <div class="col-4 justify-content-center">
-        <h2>Sommerhus Preview</h2>
-        <div class="card my-2 p-2 " style="width: 20em; background: whitesmoke;">
+<div class="row my-2 p-2 d-flex flex-wrap" style="width: 100%; background: whitesmoke;">
+    <div class="col-12 row d-flex justify-content-center">
+        <h4 class="d-flex justify-content-center">Sommerhus Preview Card</h4>
+        <div class="card my-2 p-2" style="width: 20em; height: 32em; background: whitesmoke;">
             <div>
                 <div class="col-12 justify-content-center">
-                <form method="post" enctype="multipart/form-data">
-                    <input type="file" id="imageInput" onchange="displayImage(this)"/>
                     <img id="uploadedImage" src="#" alt="Uploaded Image" class="card-img-top rounded-2" style="width: 100%; height: 14em; justify-content: center;">
-                    <input class="justify-content-center" type="submit" value="Upload Billede Fil"/>
-                    </form>
+                    
                 </div>
                 <div class="card-subtitle my-2">
-                    <h2>#lokation</h2>
-                    <h3>#Pris</h3>
+                    <h2 id="outputLocation"></h2>
+                    <h4 id="outputPrice"></h4>
                 </div>
+
                 <div class="card-body text-black">
-                    <ul>
-                        <li>Beskrivelse:</li>
-                        <p>#beskrivelse</p>
-                    </ul>
+                    <h5>Beskrivelse:</h5>
+                    <p id ="outputText"></p>
                     <div class="d-flex justify-content-around text-white">
                         <a class="btn btn-outline-dark" style="background: #DEE50F; border: 2px dimgrey; width: 50%;">BESTIL</a>
                     </div>
@@ -32,54 +28,50 @@
             </div>
         </div>
     </div>
-    <div class="col-8 row">
+    <div class="col-12 row d-flex flex-wrap" style="padding-top: 15px;">
         <h4 class=" d-flex justify-content-center">Sommer Hus Lokation</h4>
         <div class="col-8">
-            <label>By</label><br />
-            <input class="form-control" /><br />
+            <input id="inputCity" placeholder="By" class="form-control" oninput="displayLocation()" /><br />
         </div>
         <div class="col-4">
-            <label>Post Nummer</label><br />
-            <input class="form-control" /><br />
+            <input id="inputPostalcode" placeholder="Postnummer" oninput="displayLocation()" class="form-control" /><br />
         </div>
         <div class="col-6">
-            <label>Vej Navn</label><br />
-            <input class="form-control" /><br />
+            <input class="form-control" placeholder="Vej Navn"/><br />
         </div>
         <div class="col-3">
-            <label>Vej Nr.</label><br />
-            <input class="form-control" /><br />
+            <input class="form-control" placeholder="Vej Nr." /><br />
         </div>
         <div class="col-3">
-            <label>Etage</label><br />
-            <input class="form-control" /><br />
+            <input class="form-control" placeholder="Etage"/><br />
         </div>
         <div class="row d-flex">
             <div class="col-6">
                 <h4 class="d-flex justify-content-center">Pris Pr. Dag</h4>
-                <div class="col-12">
-                    <label>Pris Kr.</label>
-                    <input class="form-control"/><br />
+                <div class="col-12" style="margin-top: 32px;">
+                    <input class="form-control" placeholder="Pris Pr. Dag" type="number" id="inputPrice" oninput="displayPrice()" /><br />
                 </div>
-                <h4 class="d-flex justify-content-center">Beskrivelse</h4>
+                <h4 class="d-flex justify-content-center" style="margin-top: 10px;">Beskrivelse</h4>
                 <div class="col-12">
-                    <label>Beskrivelse</label>
-                    <input class="form-control"/><br />
+                    <input class="form-control" placeholder="Beskrivelse" id="inputText" type="text" oninput="displayText()" /><br />
+                </div>
+                <h4 class="d-flex justify-content-center">Indsæt Billede Fil</h4>
+                <div class="col-12">
+                    <input class="card-img-top rounded-2" style="width: 100%; height: 14em; justify-content: center;" type="file" id="imageInput" onchange="displayImage(this)" />
                 </div>
             </div>
-        <div class="col-6">
-                <h4 class="d-flex justify-content-center" >Udlejning periode</h4>
-            <div class="col-12 row d-flex-inline justify-content-center">
-                <div class="col-6 justify-content-around">
+            <div class="col-6 flex-column">
+                <h4 class="d-grid justify-content-center" >Udlejnings Periode</h4>
+                <div class="col-12">
                     <label>Dato Fra</label><br/>
-                    <input type="date" name="fromDate">
+                    <input type="date" class="form-control" name="fromDate"><br/>
                 </div>
-                <div class="col-6 justify-content-around">
+                <h4 class="d-gridjustify-content-center"></h4>
+                <div class="col-12">
                     <label>Dato Til</label><br/>
-                    <input type="date" name="toDate">
-                </div>
+                    <input type="date" class="form-control" name="toDate"><br/>
+                </div>                    
             </div>
-        </div>
         </div>
     </div>
 </div>
@@ -95,5 +87,36 @@
             };
             reader.readAsDataURL(input.files[0]);
         }
+    }
+</script>
+
+<script>
+    function displayText() {
+        var inputText = document.getElementById("inputText").value;
+
+        var outputElement = document.getElementById("outputText");
+
+        outputElement.innerHTML = inputText;
+    }
+</script>
+
+<script>
+    function displayLocation() {
+        var city = document.getElementById("inputCity").value;
+        var postalCode = document.getElementById("inputPostalcode").value;
+
+        var outputElement = document.getElementById("outputLocation");
+
+        outputElement.textContent = postalCode + " " + city;
+    }
+</script>
+
+<script>
+    function displayPrice() {
+        var inputPrice = parseFloat(document.getElementById("inputPrice").value);
+
+        var outputElement = document.getElementById("outputPrice");
+
+        outputElement.textContent = "Kr. " + inputPrice.toFixed(2) + " Pr. Dag";
     }
 </script>
