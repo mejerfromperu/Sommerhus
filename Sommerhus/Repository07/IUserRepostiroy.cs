@@ -16,6 +16,7 @@ namespace Sommerhus.Repository07
         string? ToString();
         User Update(int id, User User);
 
+        User GetByEmailAndPassword(string email, string password);
         public List<User> Search(int? id, string? name, string? team);
 
     }
