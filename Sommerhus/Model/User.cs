@@ -261,7 +261,7 @@ namespace Sommerhus.Model
         }
 
 
-        public User(string firstName, string lastName, string email, string password, string phone, string streetName, string houseNumber, string floor, int postalCode, bool isLandlord, bool isAdmin)
+        public User(string firstName, string lastName, string phone, string email , string password, string streetName, string houseNumber, string floor, int postalCode, bool isLandlord, bool isAdmin)
 
         {
 

@@ -17,6 +17,10 @@
                 <input class="form-control" asp-for="@Model.NewUserLastName" /><br />
             </div>
         </div>
+        <div class="col-9">
+            <label>Telefon Nummer</label><br />
+            <input class="form-control" asp-for="@Model.NewUserPhone" /><br />
+        </div>
         <label>Email</label><br />
         <input class="form-control" asp-for="@Model.NewUserEmail" /><br />
         <label>Password</label><br />
@@ -42,10 +46,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-9">
-                <label>Telefon Nummer</label><br />
-                <input class="form-control" asp-for="@Model.NewUserPhone" /><br />
-            </div>
             <div class="col-3 form-check form-switch d-flex justify-content-evenly align-items-center">
                 <label></label><br />
                 <label class="form-check-label" for="mySwitch">
