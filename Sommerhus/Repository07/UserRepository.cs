@@ -74,6 +74,7 @@ namespace Sommerhus.Repository07
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+
                 User user = ReadUser(reader);
                 list.Add(user);
             }
