@@ -17,7 +17,7 @@ namespace Sommerhus.Repository07
             SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string insertSql = "INSERT INTO SommerUser (FirstName, LastName, Phone, Email, Password, StreetName, HouseNumber, Floor, City, PostalCode, IsAdmin, IsLandlord) VALUES (@FirstName, @LastName, @Phone, @Email, @Password, @StreetName, @HouseNumber, @Floor, @City, @IsAdmin, @IsLandlord)";
+            string insertSql = "INSERT INTO SommerUser (FirstName, LastName, Phone, Email, Password, StreetName, HouseNumber, Floor, PostalCode, IsAdmin, IsLandlord) VALUES (@FirstName, @LastName, @Phone, @Email, @Password, @StreetName, @HouseNumber, @Floor, @PostalCode, @IsAdmin, @IsLandlord)";
 
             SqlCommand cmd = new SqlCommand(insertSql, connection);
             cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
@@ -28,7 +28,6 @@ namespace Sommerhus.Repository07
             cmd.Parameters.AddWithValue("@StreetName", user.StreetName);
             cmd.Parameters.AddWithValue("@HouseNumber", user.HouseNumber);
             cmd.Parameters.AddWithValue("@Floor", user.Floor);
-            cmd.Parameters.AddWithValue("@City", user.City);
             cmd.Parameters.AddWithValue("@PostalCode", user.PostalCode);
             cmd.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
             cmd.Parameters.AddWithValue("@IsLandlord", user.IsLandlord);
@@ -99,10 +98,9 @@ namespace Sommerhus.Repository07
             user.StreetName = reader.GetString(6);
             user.HouseNumber = reader.GetString(7);
             user.Floor = reader.GetString(8);
-            user.City = reader.GetString(9);
-            user.PostalCode = reader.GetInt32(10);
-            user.IsAdmin = reader.GetBoolean(11);
-            user.IsLandlord = reader.GetBoolean(12);
+            user.PostalCode = reader.GetInt32(9);
+            user.IsAdmin = reader.GetBoolean(10);
+            user.IsLandlord = reader.GetBoolean(11);
 
 
 
@@ -138,7 +136,6 @@ namespace Sommerhus.Repository07
                     StreetName = reader["StreetName"].ToString(),
                     HouseNumber = reader["HouseNumber"].ToString(),
                     Floor = reader["Floor"].ToString(),
-                    City = reader["City"].ToString(),
                     PostalCode = Convert.ToInt32(reader["PostalCode"]),
                     IsAdmin = reader["IsAdmin"].ToString() == "false",
                     IsLandlord = reader["IsLandlord"].ToString() == "false"
@@ -157,7 +154,7 @@ namespace Sommerhus.Repository07
             SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
             connection.Open();
 
-            string updateSql = "UPDATE SommerUser SET FirstName = @FirstName, LastName = @LastName, Phone = @Phone, Email = @Email, Password = @Password, StreetName = @StreetName, HouseNumber = @HouseNumber, Floor = @Floor, City = @City, Postalcode = @Postalcode, IsLandlord = @IsLandlord  WHERE Id = @Id";
+            string updateSql = "UPDATE SommerUser SET FirstName = @FirstName, LastName = @LastName, Phone = @Phone, Email = @Email, Password = @Password, StreetName = @StreetName, HouseNumber = @HouseNumber, Floor = @Floor, Postalcode = @Postalcode, IsLandlord = @IsLandlord  WHERE Id = @Id";
 
             SqlCommand cmd = new SqlCommand(updateSql, connection);
             cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
@@ -168,7 +165,6 @@ namespace Sommerhus.Repository07
             cmd.Parameters.AddWithValue("@StreetName", user.StreetName);
             cmd.Parameters.AddWithValue("@HouseNumber", user.HouseNumber);
             cmd.Parameters.AddWithValue("@Floor", user.Floor);
-            cmd.Parameters.AddWithValue("@City", user.City);
             cmd.Parameters.AddWithValue("@PostalCode", user.PostalCode);
             cmd.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
             cmd.Parameters.AddWithValue("@IsLandlord", user.IsLandlord);

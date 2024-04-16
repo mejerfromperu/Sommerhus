@@ -51,9 +51,6 @@ namespace SommerhusHjemmeside.Pages.UserSite
         public string NewUserFloor { get; set; }
 
         [BindProperty]
-        public string NewUserCity { get; set; }
-
-        [BindProperty]
         public int NewUserPostalCode { get; set; }
 
         [BindProperty]
@@ -71,11 +68,11 @@ namespace SommerhusHjemmeside.Pages.UserSite
         {
 
             ErrorMessage = "fEJL 404 KUNNE IKKE OPRETTE EN USER";
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
-            User newuser = new User(NewUserFirstName, NewUserLastName, NewUserPhone, NewUserEmail, NewUserPassword, NewUserStreetName, NewUserHouseNumber, NewUserFloor, NewUserCity, NewUserPostalCode, NewUserIsLandLord, NewUserIsAdmin);
+            User newuser = new User(NewUserFirstName, NewUserLastName, NewUserPhone, NewUserEmail, NewUserPassword, NewUserStreetName, NewUserHouseNumber, NewUserFloor, NewUserPostalCode, NewUserIsLandLord, NewUserIsAdmin);
 
             try
             {
