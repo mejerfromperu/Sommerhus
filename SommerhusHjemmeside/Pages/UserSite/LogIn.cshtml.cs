@@ -45,7 +45,7 @@ namespace SommerhusHjemmeside.Pages.UserSite
                 // Store a success message in TempData
                 TempData["Message"] = "Login successful!";
 
-                return RedirectToPage("Index");
+                return RedirectToPage("/Index");
             }
 
             // Authentication failed
