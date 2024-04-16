@@ -1,6 +1,7 @@
 ﻿@page
 @model SommerhusHjemmeside.Pages.UserSite.LogInModel
 @{
+    ViewData["Title"] = "Log In";
 }
 
 
@@ -14,8 +15,8 @@
             </div>
 
             <div class="input_box">
-                <label for="username" class="label">Username</label>
-                <input type="text" id="username" class="input-field" placeholder="Username" required />
+                <label for="username" class="label">Email</label>
+                <input type="text" id="username" class="input-field" placeholder="Email" required />
                 <i class="bx bx-lock-alt icon"></i>
             </div>
 
@@ -34,7 +35,9 @@
                     <a href="#">Forgot Password</a>
                 </div>
             </div>
-
+            <div class="NewProfile">
+                <a asp-page="/UserSite/Create">Create New Profile</a>
+            </div>
             <div class="input_box">
                 <input type="submit" class="input-submit" value="Login" />
             </div>
