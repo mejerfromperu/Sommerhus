@@ -23,22 +23,27 @@ namespace SommerhusHjemmeside.Pages.UserSite
 
         [BindProperty]
         [Required(ErrorMessage = "Der skal være et navn")]
-        [StringLength(100, MinimumLength = 2, ErrorMessage = "Der skal være mindst to tegn i et navn")]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "Der skal være mindst to tegn i et fornavn")]
         public string NewUserFirstName { get; set; }
 
         [BindProperty]
         [Required(ErrorMessage = "SORRY SIR! THE PHONENUMBER IS EITHER TOO SHORT OR TOO LONG!")]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "Der skal være mindst to tegn i et efternavn")]
         public string NewUserLastName { get; set; }
 
         [BindProperty]
-        [Required(ErrorMessage = "hellooooooooooo sir! this team doesnt exist")]
+        [Required(ErrorMessage = "hellooooooooooo sir! this phonenumber is to short. Must be 8 characters")]
+        [StringLength(100, MinimumLength = 8, ErrorMessage = "Der skal være mindst otte cifre i et telefonnummer")]
         public string NewUserPhone { get; set; }
 
         [BindProperty]
-        [Required(ErrorMessage = "Most be higher than 0")]
+        [Required(ErrorMessage = "Dette er ikke en gyldig email")]
+        [StringLength(100, ErrorMessage = "Dette er ikke en gyldig email")]
+        [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Emailen skal indeholde '@' tegnet")]
         public string NewUserEmail { get; set; }
 
         [BindProperty]
+        [StringLength(100, MinimumLength = 8, ErrorMessage = "Der skal være mindst 8 tegn i et password")]
         public string NewUserPassword { get; set; }
 
         [BindProperty]
