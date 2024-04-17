@@ -22,40 +22,44 @@ namespace SommerhusHjemmeside.Pages.UserSite
 
 
         [BindProperty]
-        [Required(ErrorMessage = "Der skal være et navn")]
+        [Required(ErrorMessage = "Fornavn skal udfyldes")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Der skal være mindst to tegn i et fornavn")]
         public string NewUserFirstName { get; set; }
 
         [BindProperty]
-        [Required(ErrorMessage = "SORRY SIR! THE PHONENUMBER IS EITHER TOO SHORT OR TOO LONG!")]
+        [Required(ErrorMessage = "Efternavn skal udfyldes")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Der skal være mindst to tegn i et efternavn")]
         public string NewUserLastName { get; set; }
 
         [BindProperty]
-        [Required(ErrorMessage = "hellooooooooooo sir! this phonenumber is to short. Must be 8 characters")]
+        [Required(ErrorMessage = "Telefonnummer skal udfyldes")]
         [StringLength(100, MinimumLength = 8, ErrorMessage = "Der skal være mindst otte cifre i et telefonnummer")]
         public string NewUserPhone { get; set; }
 
         [BindProperty]
-        [Required(ErrorMessage = "Dette er ikke en gyldig email")]
+        [Required(ErrorMessage = "Email skal udfyldes")]
         [StringLength(100, ErrorMessage = "Dette er ikke en gyldig email")]
         [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Emailen skal indeholde '@' tegnet")]
         public string NewUserEmail { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Password skal udfyldes")]
         [StringLength(100, MinimumLength = 8, ErrorMessage = "Der skal være mindst 8 tegn i et password")]
         public string NewUserPassword { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Vejnavn skal udfyldes")]
         public string NewUserStreetName { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Hus nummer skal udfyldes")]
         public string NewUserHouseNumber { get; set; }
 
         [BindProperty]
         public string NewUserFloor { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Postnummer skal udfyldes")]
         public int NewUserPostalCode { get; set; }
 
         [BindProperty]
