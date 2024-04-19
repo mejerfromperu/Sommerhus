@@ -199,7 +199,7 @@ namespace Sommerhus.Repository07
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
-                        {
+                        {       
                             return new User
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),

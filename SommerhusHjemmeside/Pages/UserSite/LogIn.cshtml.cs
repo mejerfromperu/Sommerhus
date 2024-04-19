@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.IdentityModel.Tokens;
 using Sommerhus.Model;
 using Sommerhus.Repository07;
+using SommerhusHjemmeside.Services;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 
@@ -44,6 +45,10 @@ namespace SommerhusHjemmeside.Pages.UserSite
 
                 // Store a success message in TempData
                 TempData["Message"] = "Login successful!";
+
+                User user2 = new User(user.Id, user.FirstName, user.LastName, user.Email, user.Password, user.Phone, user.StreetName, user.HouseNumber, user.Floor, user.PostalCode, user.IsLandlord, user.IsAdmin);
+                SessionHelper.Set(user, HttpContext);
+
 
                 return RedirectToPage("/Index");
             }
