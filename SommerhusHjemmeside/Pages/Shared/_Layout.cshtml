@@ -1,6 +1,6 @@
 ﻿@using Sommerhus.Model
 @using SommerhusHjemmeside.Services
-@{
+@* @{
     User? user = null;
     try
     {
@@ -8,7 +8,7 @@
     }
     catch { }
 
-}
+} *@
 
 
 <!DOCTYPE html>
@@ -41,17 +41,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/UserSite/LogIn">Log In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/SommerHouse/GreateSommerHouse">Nyt SommerHus</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/SommerHouseFolder/GreateSommerHouse">Nyt SommerHus</a>
                         </li>
-                        @if (user != null)
+                        @* @if (user != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/SommerHouse/GreateSommerHouse">YOU ARE LOGGED IN!</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="">YOU ARE LOGGED IN!</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/UserSite/Logout">Logout</a>
                             </li>
-                        }
+                        } *@
                     </ul>
                 </div>
             </div>

@@ -76,13 +76,13 @@ namespace SommerhusHjemmeside.Pages.SommerHouseFolder
                 return Page();
             }
 
-            return RedirectToPage("Index");
+            return RedirectToPage("/Index");
 
         }
 
         public IActionResult OnPostCancel()
         {
-            return RedirectToPage("Index");
+            return RedirectToPage("/Index");
         }
 
     }

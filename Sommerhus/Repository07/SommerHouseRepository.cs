@@ -22,9 +22,9 @@ namespace Sommerhus.Repository07
             cmd.Parameters.AddWithValue("@HouseNumber", s.HouseNumber);
             cmd.Parameters.AddWithValue("@Floor", s.Floor);
             cmd.Parameters.AddWithValue("@PostalCode", s.PostalCode);
-            cmd.Parameters.AddWithValue("@IsAdmin", s.Description);
-            cmd.Parameters.AddWithValue("@IsLandlord", s.Price);
-            cmd.Parameters.AddWithValue("@IsLandlord", s.Picture);
+            cmd.Parameters.AddWithValue("@Description", s.Description);
+            cmd.Parameters.AddWithValue("@Price", s.Price);
+            cmd.Parameters.AddWithValue("@Picture", s.Picture);
 
             int rowsAffected = cmd.ExecuteNonQuery();
             Console.WriteLine("Rows affected: " + rowsAffected);

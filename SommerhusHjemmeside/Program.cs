@@ -8,9 +8,9 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton<IUserRepostiroy>(new UserRepository());
 
-builder.Services.AddSession();
-
 builder.Services.AddSingleton<ISommerHouseRepository>(new SommerHouseRepository());
+
+builder.Services.AddSession();
 
 var app = builder.Build();
 
