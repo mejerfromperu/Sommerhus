@@ -209,11 +209,11 @@ namespace Sommerhus.Model
 
             LastName = string.Empty;
 
+            Phone = string.Empty;
+
             Email = string.Empty;
 
             Password = string.Empty;
-
-            Phone = string.Empty;
 
             StreetName = string.Empty;
 

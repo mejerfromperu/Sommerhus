@@ -1,0 +1,66 @@
+﻿@page
+@model SommerhusHjemmeside.Pages.UserSite.EditUserModel
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<form method="post">
+    <div class="form-group>">
+        <div class="container my-2 p-2" style="background-color: whitesmoke; border: solid 2px #2082B0;">
+        <div class="row">
+            <h2 class="justify-content-center">Updater Dine Oplysninger</h2>
+            <div class="col-6">
+                <label>Navn</label><br />
+                <input class="form-control" @*asp-for="@Model.UpdateUserFirstName" *@ /><br />
+            </div>
+            <div class="col-6">
+                <label>Efter Navn</label><br />
+                <input class="form-control" @*asp-for="@Model.UpdateUserLastName"  *@/><br />
+            </div>
+        </div>
+        <label>Email</label><br />
+        <input class="form-control" placeholder="Email" @*asp-for="@Model.NewUserEmail" *@ /><br />
+        <label>Gentag Email</label><br />
+        <input class="form-control" placeholder="Email" @*asp-for="@Model.NewUserEmail" *@ /><br />
+        <div class="row">
+            <div class="col-4">
+                <label>Post Nummer</label><br />
+                <input class="form-control" @*asp-for="@Model.NewUserPostalCode" *@ /><br />
+            </div>
+            <div class="col-4">
+                <label>Vej Navn</label><br />
+                <input class="form-control" @*asp-for="@Model.NewUserStreetName" *@ /><br />
+            </div>
+            <div class="col-2">
+                <label>Vej Nr.</label><br />
+                <input class="form-control" @*asp-for="@Model.NewUserHouseNumber" *@ /><br />
+            </div>
+            <div class="col-2">
+                <label>Etage</label><br />
+                <input class="form-control" @*asp-for="@Model.NewUserFloor" *@ /><br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-9">
+                <label>Telefon Nummer</label><br />
+                <input class="form-control" @*asp-for="@Model.NewUserPhone" *@ /><br />
+            </div>
+            <div class="col-3 form-check form-switch d-flex justify-content-evenly align-items-center">
+                <label></label><br />
+                <label class="form-check-label" for="mySwitch">
+                    <input class="form-check-input" type="checkbox" id="mySwitch" name="Udlejer" value="False" unchecked>Udlejer
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 d-flex justify-content-center">
+                <input type="submit" value="Update User" class="btn btn-primary" />
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+                <input type="submit" value="Fortryd" class="btn btn-outline-danger" asp-page-handler="Cancel" />
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
