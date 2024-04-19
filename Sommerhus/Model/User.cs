@@ -234,6 +234,7 @@ namespace Sommerhus.Model
         public User(int id, string firstName, string lastName, string email, string password, string phone, string streetName, string houseNumber, string floor, int postalCode, bool isLandlord, bool isAdmin)
 
         {
+            id = 0;
 
             Id = id;
 
@@ -264,6 +265,7 @@ namespace Sommerhus.Model
         public User(string firstName, string lastName, string phone, string email , string password, string streetName, string houseNumber, string floor, int postalCode, bool isLandlord, bool isAdmin)
 
         {
+            Id = 0;
 
             FirstName = firstName;
 
@@ -292,6 +294,7 @@ namespace Sommerhus.Model
         public User(string firstName, string lastName, string email, string password, string phone, string streetName, string houseNumber, string floor, int postalCode)
 
         {
+            Id = 0;
 
             FirstName = firstName;
 
