@@ -14,7 +14,7 @@ namespace Sommerhus.Model
 
 {
 
-    public class Summerhouse
+    public class SommerHouse
 
     {
 
@@ -36,11 +36,13 @@ namespace Sommerhus.Model
 
         public decimal Price { get; set; }
 
+        public string Picture { get; set; }
+
 
 
         // Constructor 
 
-        public Summerhouse()
+        public SommerHouse()
 
         {
 
@@ -60,11 +62,13 @@ namespace Sommerhus.Model
 
             Price = 0.0m;
 
+            Picture = string.Empty;
+
         }
 
 
 
-        public Summerhouse(int id, string streetName, string houseNumber, int postalCode, string city, string floor, string description, decimal price)
+        public SommerHouse(int id, string streetName, string houseNumber, int postalCode, string city, string floor, string description, decimal price, string picture)
 
         {
 
@@ -83,6 +87,8 @@ namespace Sommerhus.Model
             Description = description;
 
             Price = price;
+
+            Picture = picture;
 
         }
 
