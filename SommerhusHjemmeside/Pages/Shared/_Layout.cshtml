@@ -43,13 +43,13 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/SommerHouse/GreateSommerHouse">Nyt SommerHus</a>
                         </li>
-                        @if (user is not null)
+                        @if (user != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link" href="/Members/Index">Du Kan se Det Her hvis du er logget ind</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/SommerHouse/GreateSommerHouse">YOU ARE LOGGED IN!</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/UserSite/Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/UserSite/Logout">Logout</a>
                             </li>
                         }
                     </ul>

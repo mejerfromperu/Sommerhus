@@ -19,7 +19,7 @@ namespace SommerhusHjemmeside.Services
         // gemmer et objekt af typen T i session
         public static void Set<T>(T t, HttpContext context)
         {
-            String sessionName = typeof(T).FullName;
+            String sessionName = typeof(T).Name;
             String s = JsonSerializer.Serialize(t);
             context.Session.SetString(sessionName, s);
         }

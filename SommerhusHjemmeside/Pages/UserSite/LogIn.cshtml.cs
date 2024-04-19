@@ -40,11 +40,7 @@ namespace SommerhusHjemmeside.Pages.UserSite
 
             if (user != null)
             {
-                // Authentication successful
-                // You can set session variables or identity claims here
-
-                // Store a success message in TempData
-                TempData["Message"] = "Login successful!";
+                
 
                 User user2 = new User(user.Id, user.FirstName, user.LastName, user.Email, user.Password, user.Phone, user.StreetName, user.HouseNumber, user.Floor, user.PostalCode, user.IsLandlord, user.IsAdmin);
                 SessionHelper.Set(user, HttpContext);
