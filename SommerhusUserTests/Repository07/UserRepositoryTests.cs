@@ -1,8 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using Sommerhus.Model;
 using Sommerhus.Repository07;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,12 +27,23 @@ namespace Sommerhus.Repository07.Tests
         public void AddTest()
         {
 
-            User userToAdd = new User();
+            // Arrange
+            var mockConnection = new Mock<SqlConnection>();
+            var mockCommand = new Mock<SqlCommand>();
 
-            _userRepository.Add(userToAdd);
+            mockConnection.Setup(x => x.Open());
+            mockConnection.Setup(x => x.CreateCommand()).Returns(mockCommand.Object);
 
+            var userRepository = new UserRepository(mockConnection.Object);
 
-            Assert.IsNull(_userRepository);
+            var userToAdd = new User(/* Provide necessary user data for testing */);
+
+            // Act
+            var addedUser = _userRepository.Add(userToAdd);
+
+            // Assert
+            Assert.IsNotNull(addedUser);
+            // Add more assertions based on the expected behavior of the Add method
         }
 
         //[TestMethod()]
