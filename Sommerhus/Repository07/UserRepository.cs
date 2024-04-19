@@ -28,7 +28,7 @@ namespace Sommerhus.Repository07
             cmd.Parameters.AddWithValue("@StreetName", user.StreetName);
             cmd.Parameters.AddWithValue("@HouseNumber", user.HouseNumber);
             cmd.Parameters.AddWithValue("@Floor", user.Floor);
-            cmd.Parameters.AddWithValue("@PostalCode", user.PostalCode);
+            cmd.Parameters.AddWithValue("@PostalCode",   user.PostalCode);
             cmd.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
             cmd.Parameters.AddWithValue("@IsLandlord", user.IsLandlord);
 
@@ -74,6 +74,7 @@ namespace Sommerhus.Repository07
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+
                 User user = ReadUser(reader);
                 list.Add(user);
             }
@@ -151,7 +152,7 @@ namespace Sommerhus.Repository07
 
         public User Update(int id, User user)
         {
-            SqlConnection connection = new SqlConnection(Secret.GetConnectionString);
+            SqlConnection connection = new SqlConnection("Data Source=mssql16.unoeuro.com;Initial Catalog=isakgm_dk_db_test;User ID=isakgm_dk;Password=f2t9wHmFRDenbEA53ghp;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             connection.Open();
 
             string updateSql = "UPDATE SommerUser SET FirstName = @FirstName, LastName = @LastName, Phone = @Phone, Email = @Email, Password = @Password, StreetName = @StreetName, HouseNumber = @HouseNumber, Floor = @Floor, Postalcode = @Postalcode, IsLandlord = @IsLandlord  WHERE Id = @Id";
@@ -180,6 +181,47 @@ namespace Sommerhus.Repository07
                 return GetById(id);
             }
             return null;
+        }
+
+        public User GetByEmailAndPassword(string email, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(Secret.GetConnectionString))
+            {
+                connection.Open();
+
+                string selectSql = "SELECT * FROM SommerUser WHERE Email = @Email AND Password = @Password";
+
+                using (SqlCommand cmd = new SqlCommand(selectSql, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Password", password);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {       
+                            return new User
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                                FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
+                                LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                                Phone = reader.GetString(reader.GetOrdinal("Phone")),
+                                Email = reader.GetString(reader.GetOrdinal("Email")),
+                                Password = reader.GetString(reader.GetOrdinal("Password")),
+                                StreetName = reader.GetString(reader.GetOrdinal("StreetName")),
+                                HouseNumber = reader.GetString(reader.GetOrdinal("HouseNumber")),
+                                Floor = reader.GetString(reader.GetOrdinal("Floor")),
+                                PostalCode = reader.GetInt32(reader.GetOrdinal("PostalCode")),
+                                IsAdmin = reader.GetBoolean(reader.GetOrdinal("IsAdmin")),
+                                IsLandlord = reader.GetBoolean(reader.GetOrdinal("IsLandlord"))
+                            };
+                        }
+                    }
+                }
+
+            }
+
+            return null; // User not found
         }
 
         public List<User> Search(int? id, string? name, string? team)
