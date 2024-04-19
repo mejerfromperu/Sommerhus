@@ -92,6 +92,26 @@ namespace Sommerhus.Model
 
         }
 
+        public SommerHouse(string streetName, string houseNumber, string floor, int postalCode, string description, decimal price, string picture)
+
+        {
+
+            StreetName = streetName;
+
+            HouseNumber = houseNumber;
+
+            Floor = floor;
+
+            PostalCode = postalCode;
+
+            Description = description;
+
+            Price = price;
+
+            Picture = picture;
+
+        }
+
     }
 
 }
